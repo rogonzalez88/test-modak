@@ -1,0 +1,10 @@
+{
+  "exec": "rm -rf dist && tsc && node dist/index.js",
+  "watch": [
+    "src"
+  ],
+  "ignore": [
+    "test/**/*.spec.ts"
+  ],
+  "ext": "ts"
+}
