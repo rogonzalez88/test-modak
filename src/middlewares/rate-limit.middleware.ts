@@ -24,7 +24,7 @@ export class RateLimitMiddleware implements ExpressMiddlewareInterface {
     const { user, type } = request.body;
     const configRate =
       config.notification.rate[type] || config.notification.rate.default;
-    const redisKey = `rate-${user.toLowerCase()}`;
+    const redisKey = `rate-${type}-${user.toLowerCase()}`;
     const count = await this.client.incr(redisKey);
     if (count === 1) {
       this.client.expire(redisKey, configRate.seconds);
